@@ -44,8 +44,8 @@ pcall(
   )
   end
 )
-tween:Play()
-
+tween:Play() 
+Hold:Destroy()
 if _G.StopTween == true then
 tween:Cancel()
 _G.Clip = false
@@ -306,6 +306,14 @@ to(CFrame.new(28674.244140625, 14890.6767578125, 445.4310607910156))
 to(CFrame.new(29012.341796875, 14890.9755859375, -380.1492614746094))
 					  	end
     end
-}) 
+})
 
+Main:AddButton(
+  {
+    Name = "Cút Về Mansion",
+    Callback = function ()
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5084.8447265625, 316.48101806641, -3145.3752441406) 
+      end
+  }
+  )
 OrionLib:Init()
