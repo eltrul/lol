@@ -16,12 +16,7 @@ Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.P
 if Distance < 350 then 
   lp.Character.HumanoidRootPart.CFrame = Pos 
   end 
-if not game.Players.LocalPlayer.Character.PrimaryPart:FindFirstChild("Hold") then
-local Hold = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character.PrimaryPart)
-Hold.Name = "Hold"
-Hold.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
-Hold.Velocity = Vector3.new(0, 0, 0)
-end
+
 local mul = 0.87
 if Distance < 250 then
 Speed = 700 * mul
@@ -44,8 +39,7 @@ pcall(
   )
   end
 )
-tween:Play() 
-Hold:Destroy()
+tween:Play()
 if _G.StopTween == true then
 tween:Cancel()
 _G.Clip = false
