@@ -1,0 +1,309 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+
+
+
+
+function to(Pos) 
+if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0 and not areportal then
+
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X, Pos.Y, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame .Z)
+
+
+
+Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+if Distance < 350 then 
+  lp.Character.HumanoidRootPart.CFrame = Pos 
+  end 
+if not game.Players.LocalPlayer.Character.PrimaryPart:FindFirstChild("Hold") then
+local Hold = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character.PrimaryPart)
+Hold.Name = "Hold"
+Hold.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+Hold.Velocity = Vector3.new(0, 0, 0)
+end
+local mul = 0.87
+if Distance < 250 then
+Speed = 700 * mul
+elseif Distance < 500 then
+Speed = 500 * mul
+elseif Distance < 1000 then
+Speed = 450 * mul
+elseif Distance >= 1000 then
+Speed = 350 * mul
+end
+pcall(
+  function()
+  tween =
+  game:GetService("TweenService"):Create(
+    game.Players.LocalPlayer.Character.HumanoidRootPart,
+    TweenInfo.new(Distance / Speed, Enum.EasingStyle.Linear),
+    {
+      CFrame = Pos
+    }
+  )
+  end
+)
+tween:Play()
+
+if _G.StopTween == true then
+tween:Cancel()
+_G.Clip = false
+end
+end
+end 
+
+
+
+spawn(function()
+
+    pcall(function()
+        while wait() do
+            if getgenv().TeleportToMirage then
+				if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+					_G.CenterMI = game:GetService("Workspace").Map.MysticIsland.Center.Position
+					to(CFrame.new(_G.CenterMI))
+				end
+			end
+        end
+    end)
+end) 
+
+
+
+spawn(function()
+
+    pcall(function()
+        while wait() do
+            if getgenv().TeleportToGear then
+				if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+					for i,v in pairs(game:GetService("Workspace").Map.MysticIsland:GetChildren()) do 
+						if v:IsA("MeshPart")then 
+                            if v.Material ==  Enum.Material.Neon then  
+                                to(v.CFrame)
+                            end
+                        end
+					end
+				end
+			end
+        end
+    end)
+end) 
+
+
+
+   spawn(function()
+
+    pcall(function()
+        while wait() do
+            if getgenv().AutoTrial then
+				if game:GetService("Players").LocalPlayer.Data.Race.Value == "Human" then
+					for i,v in pairs(game.Workspace.Enemies:GetDescendants()) do
+						if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+							pcall(function()
+								repeat wait(.1)
+									v.Humanoid.Health = 0
+									v.HumanoidRootPart.CanCollide = false
+									sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+								until not getgenv().AutoTrial or not v.Parent or v.Humanoid.Health <= 0
+							end)
+						end
+					end
+				elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Skypiea" then
+					for i,v in pairs(game:GetService("Workspace").Map.SkyTrial.Model:GetDescendants()) do
+						if v.Name ==  "snowisland_Cylinder.081" then
+							to(v.CFrame* CFrame.new(0,0,0))
+						end
+					end
+				elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Fishman" then
+					for i,v in pairs(game:GetService("Workspace").SeaBeasts.SeaBeast1:GetDescendants()) do
+						if v.Name ==  "HumanoidRootPart" then
+							to(v.CFrame* CFrame.new(20,450,0))
+							for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+								if v:IsA("Tool") then
+									if v.ToolTip == "Melee" then -- "Blox Fruit" , "Sword" , "Wear" , "Agility"
+										game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+									end
+								end
+							end
+							game:GetService("VirtualInputManager"):SendKeyEvent(true,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							game:GetService("VirtualInputManager"):SendKeyEvent(false,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							wait(.2)
+							game:GetService("VirtualInputManager"):SendKeyEvent(true,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							game:GetService("VirtualInputManager"):SendKeyEvent(false,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							wait(.2)
+							game:GetService("VirtualInputManager"):SendKeyEvent(true,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							game:GetService("VirtualInputManager"):SendKeyEvent(false,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+								if v:IsA("Tool") then
+									if v.ToolTip == "Blox Fruit" then -- "Blox Fruit" , "Sword" , "Wear" , "Agility"
+										game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+									end
+								end
+							end
+							game:GetService("VirtualInputManager"):SendKeyEvent(true,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							game:GetService("VirtualInputManager"):SendKeyEvent(false,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							wait(.2)
+							game:GetService("VirtualInputManager"):SendKeyEvent(true,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							game:GetService("VirtualInputManager"):SendKeyEvent(false,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							wait(.2)
+							game:GetService("VirtualInputManager"):SendKeyEvent(true,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							game:GetService("VirtualInputManager"):SendKeyEvent(false,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+					
+							wait(0.5)
+							for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+								if v:IsA("Tool") then
+									if v.ToolTip == "Sword" then -- "Blox Fruit" , "Sword" , "Wear" , "Agility"
+										game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+									end
+								end
+							end
+							game:GetService("VirtualInputManager"):SendKeyEvent(true,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							game:GetService("VirtualInputManager"):SendKeyEvent(false,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							wait(.2)
+							game:GetService("VirtualInputManager"):SendKeyEvent(true,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							game:GetService("VirtualInputManager"):SendKeyEvent(false,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							wait(.2)
+							game:GetService("VirtualInputManager"):SendKeyEvent(true,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							game:GetService("VirtualInputManager"):SendKeyEvent(false,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							wait(0.5)
+							for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+								if v:IsA("Tool") then
+									if v.ToolTip == "Gun" then -- "Blox Fruit" , "Sword" , "Wear" , "Agility"
+										game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+									end
+								end
+							end
+							game:GetService("VirtualInputManager"):SendKeyEvent(true,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							game:GetService("VirtualInputManager"):SendKeyEvent(false,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							wait(.2)
+							game:GetService("VirtualInputManager"):SendKeyEvent(true,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							game:GetService("VirtualInputManager"):SendKeyEvent(false,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							wait(.2)
+							game:GetService("VirtualInputManager"):SendKeyEvent(true,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+							game:GetService("VirtualInputManager"):SendKeyEvent(false,99,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+						end
+					end
+				elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Cyborg" then
+					to(CFrame.new(28654, 14898.7832, -30, 1, 0, 0, 0, 1, 0, 0, 0, 1))
+				elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Ghoul" then
+					for i,v in pairs(game.Workspace.Enemies:GetDescendants()) do
+						if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+							pcall(function()
+								repeat wait(.1)
+									v.Humanoid.Health = 0
+									v.HumanoidRootPart.CanCollide = false
+									sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+								until not getgenv().AutoTrial or not v.Parent or v.Humanoid.Health <= 0
+							end)
+						end
+					end
+				elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Mink" then
+					for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
+						if v.Name == "StartPoint" then
+							to(v.CFrame* CFrame.new(0,10,0))
+					  	end
+				   	end
+				end
+			end
+        end
+    end)
+end)
+
+local Window = OrionLib:MakeWindow({Name = "Cai Lol Ma M Nha", HidePremium = false, SaveConfig = true, ConfigFolder = ".lol"})
+
+
+
+local Main = Window:MakeTab({
+	Name = "Long Lol",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+}) 
+
+local FullMoon = Main:AddLabel("Đang Load Nha Em") 
+local mr = Main:AddLabel("Đang Load Nữa") 
+
+task.spawn(function()
+	while task.wait(2) do
+		pcall(function()
+			if game.Workspace._WorldOrigin.Locations:FindFirstChild("Mirage Island") then
+				mr:Set("  + Có Mirage Rồi Nha Cu")
+			else
+				mr:Set("  + Mirage Chưa Ra Nha Ku")
+			end
+		end)
+	end
+end) 
+
+        task.spawn(function()
+            while task.wait(2) do
+                pcall(function()
+                    if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
+                        FullMoon:Set("  + Full Moon R Nha Cu")
+                    elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" then
+                        FullMoon:Set("  + Full Moon 75% R Nha Cu")
+                    elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
+                        FullMoon:Set("  + Full Moon Có Đc 50% :(")
+                    elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
+                        FullMoon:Set("  + có full 25% th, rejoin sv đi")
+                    elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
+                        FullMoon:Set("  + 🌖 : Full Moon 15%")
+                    else
+                        FullMoon:Set("  + 🌚 : Full Moon 0%")
+                    end
+                end)
+            end
+        end)
+Main:AddToggle({
+  Name = "Tele đến mỉ gả gẻ",
+  Default = true,
+  Callback = function(Value)
+    getgenv().TeleportToMirage = Value 
+  end 
+})
+
+Main:AddToggle(
+  {
+    Name = "Tele Đến Gear 😏",
+    Default = false,
+    Callback = function (Value) 
+      getgenv().TeleportToGear = Value
+      end
+  })
+Main:AddButton({
+  Name = "Cút Về Template Of Time( đéo dc thì spam)",
+  Callback = function ()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14896.8505859375, 102.62469482421875) 
+  end 
+  }) 
+
+Main:AddToggle({
+  Name = "Cụt Tay Auto Trial(vào trial hãng bật)", 
+  Default = false, 
+  Callback = function (Value)
+    getgenv().AutoTrial = Value 
+  end 
+  }
+  ) 
+Main:AddButton(
+  {
+    Name = "Cút Về Cửa Trial Của M(về template trc khi bật)",
+    Callback = function()
+      
+
+				if game:GetService("Players").LocalPlayer.Data.Race.Value == "Human" then
+
+ to(CFrame.new(29221.822265625, 14890.9755859375, -205.99114990234375))
+				elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Skypiea" then
+to(CFrame.new(28960.158203125, 14919.6240234375, 235.03948974609375))
+				elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Fishman" then
+to(CFrame.new(28231.17578125, 14890.9755859375, -211.64173889160156))
+				elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Cyborg" then
+to(CFrame.new(28502.681640625, 14895.9755859375, -423.7279357910156))
+				elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Ghoul" then
+to(CFrame.new(28674.244140625, 14890.6767578125, 445.4310607910156))
+				elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Mink" then
+to(CFrame.new(29012.341796875, 14890.9755859375, -380.1492614746094))
+					  	end
+    end
+})
