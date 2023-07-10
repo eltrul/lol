@@ -14,7 +14,7 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Pla
 
 Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
 if Distance < 350 then 
-  lp.Character.HumanoidRootPart.CFrame = Pos 
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Pos 
   end 
 
 local mul = 0.87
