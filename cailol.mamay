@@ -107,14 +107,14 @@ spawn(function ()
 
       boat = false
       for i, v in pairs(game:GetService("Workspace").Boats:GetChildren()) do  
-        if not v:FindFirstChild"Owner" then
-          continue
-          end
+        if v:FindFirstChild"Owner" then
+        
         print(v.Owner.Value)
         if tostring( v.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then  
           boat = v
         
         end 
+        end
       end
       if not boat then
       
@@ -357,7 +357,7 @@ Main:AddButton(
     Callback = function ()
       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5084.8447265625, 316.48101806641, -3145.3752441406) 
       end
-  } 
+  })
 Main:AddToggle({
    Name = "Treo Mirage",
    Default = false,
