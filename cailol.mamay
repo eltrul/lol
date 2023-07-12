@@ -357,6 +357,18 @@ Main:AddButton(
     Callback = function ()
       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5084.8447265625, 316.48101806641, -3145.3752441406) 
       end
-  }
+  } 
+Main:AddToggle({
+   Name = "Treo Mirage",
+   Default = false,
+   Callback= function (Value)
+    getgenv().AutoSeaEvents = Value
+end
+}
   ) 
+Main:AddButton({Name="Collect All Fruit",Callback=function()
+   for i, v in pairs(game.Workspace:GetChildren()) do
+    if v:IsA"Tool" then
+     to(v.Handle.CFrame) 
+   end end end})
 OrionLib:Init()
